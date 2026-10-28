@@ -176,8 +176,8 @@ static void Process(void*)
                 }
             }
 
-            Discord::Update(startTime, fullAddress, infoPacket.hostname, extraInfo.logo_url, infoText, serverData.smallImage, playersOnline, serverData.buttons);
-            Sleep(SLEEP_TIME);
+            auto detailsText = serverData.details.empty() ? infoPacket.hostname : replacePlaceholders(serverData.details, placeholders);
+            Discord::Update(startTime, fullAddress, detailsText, extraInfo.logo_url, infoText, serverData.smallImage, playersOnline, serverData.buttons);
         }
     }
 }
